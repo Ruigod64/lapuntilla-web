@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <title>La Puntilla · Restaurante de Mariscos · Mazatlán</title>
+  <meta name="description" content="Restaurante de mariscos en el Muelle Turístico de Mazatlán. Pescado zarandeado, aguachile negro, buffet matutino y vista al Pacífico. Abierto todos los días de 8am a 7pm."/>
+  <meta name="keywords"    content="mariscos mazatlán, restaurante muelle turístico, pescado zarandeado, aguachile, buffet mariscos, La Puntilla"/>
+  <meta name="author"      content="La Puntilla Restaurante"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="restaurant"/>
+  <meta property="og:title"       content="La Puntilla · Restaurante de Mariscos · Mazatlán"/>
+  <meta property="og:description" content="Donde el océano llega a tu mesa. Mariscos frescos frente al muelle histórico de Mazatlán."/>
+  <meta property="og:locale"      content="es_MX"/>
+
+  <!-- Favicon emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦐</text></svg>"/>
+
+  <!-- Fuentes (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+
+  <!-- ═══ CSS — El orden importa ═══ -->
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/reset.css"/>
+  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="css/navbar.css"/>
+  <link rel="stylesheet" href="css/hero.css"/>
+  <link rel="stylesheet" href="css/about.css"/>
+  <link rel="stylesheet" href="css/menu.css"/>
+  <link rel="stylesheet" href="css/buffet.css"/>
+  <link rel="stylesheet" href="css/reviews-reserve.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+  <link rel="stylesheet" href="css/gallery.css"/>
+  <link rel="stylesheet" href="css/legacy.css"/>   <!-- siempre al final -->
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "La Puntilla",
+    "description": "Restaurante de mariscos en el Muelle Turístico de Mazatlán.",
+    "telephone": "+52-669-982-8877",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Int. Muelle Turístico S/N",
+      "addressLocality": "Mazatlán",
+      "addressRegion": "Sinaloa",
+      "postalCode": "82040",
+      "addressCountry": "MX"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 23.1877073, "longitude": -106.4179444 },
+    "openingHours": "Mo-Su 08:00-19:00",
+    "servesCuisine": ["Seafood", "Mexican"],
+    "priceRange": "$$",
+    "hasMap": "https://maps.app.goo.gl/LnsMbHG39ZV9LtPq6"
+  }
+  </script>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════ -->
+<header id="navbar" role="banner">
+  <div class="container nav-inner">
+
+    <div class="nav-logo" onclick="goTo('#hero')" role="link" tabindex="0" aria-label="La Puntilla — Inicio">
+      <span class="nav-logo-name">La Puntilla</span>
+      <span class="nav-logo-sub">Muelle Turístico · Mazatlán</span>
+    </div>
+
+    <nav class="nav-links" role="navigation" aria-label="Navegación principal">
+      <span class="nav-link" onclick="goTo('#about')"   tabindex="0">Nosotros</span>
+      <span class="nav-link" onclick="goTo('#menu')"    tabindex="0">Especialidades</span>
+      <span class="nav-link" onclick="goTo('#buffet')"  tabindex="0">Buffet</span>
+      <span class="nav-link" onclick="goTo('#gallery')" tabindex="0">Galería</span>
+      <span class="nav-link" onclick="goTo('#reviews')" tabindex="0">Reseñas</span>
+      <span class="nav-link" onclick="goTo('#reserve')" tabindex="0">Reservar</span>
+    </nav>
+
+    <a href="#reserve" onclick="event.preventDefault(); goTo('#reserve')"
+       class="btn btn-red nav-cta"
+       style="padding:.6rem 1.5rem; font-size:.75rem"
+       aria-label="Ir a reservar mesa">
+      Reservar mesa
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<nav id="mobile-menu" aria-label="Menú de navegación móvil" aria-hidden="true">
+  <span class="mobile-link" onclick="closeMenu(); goTo('#about')"   tabindex="-1">Nosotros</span>
+  <span class="mobile-link" onclick="closeMenu(); goTo('#menu')"    tabindex="-1">Especialidades</span>
+  <span class="mobile-link" onclick="closeMenu(); goTo('#buffet')"  tabindex="-1">Buffet</span>
+  <span class="mobile-link" onclick="closeMenu(); goTo('#gallery')" tabindex="-1">Galería</span>
+  <span class="mobile-link" onclick="closeMenu(); goTo('#reviews')" tabindex="-1">Reseñas</span>
+  <span class="mobile-link" onclick="closeMenu(); goTo('#reserve')" tabindex="-1">Reservar</span>
+  <a href="#reserve" onclick="event.preventDefault(); closeMenu(); goTo('#reserve')"
+     class="btn btn-red" style="margin-top:.5rem" tabindex="-1">
+    Reservar mesa
+  </a>
+</nav>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero" aria-label="Bienvenidos a La Puntilla">
+
+  <!-- Capas parallax -->
+  <!-- Foto real de fondo (parallax) -->
+  <div class="hero-photo" id="hero-photo" aria-hidden="true"
+       style="position:absolute;inset:-30%;will-change:transform;
+              background:url('img/local_por_dentro.webp') center/cover no-repeat;
+              opacity:0.18;filter:saturate(1.3) brightness(0.7);">
+  </div>
+  <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
+  <div class="hero-particles" id="particles" aria-hidden="true"></div>
+
+  <!-- Ondas SVG -->
+  <div class="hero-waves" id="hero-waves" aria-hidden="true">
+    <div style="position:absolute;bottom:35px;left:0;width:100%;opacity:.15">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+        <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z" fill="#1a7b76"/>
+      </svg>
+    </div>
+    <div style="position:absolute;bottom:0;left:0;width:100%">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+        <path d="M0,40 C180,70 360,10 540,40 C720,70 900,10 1080,40 C1260,70 1350,30 1440,40 L1440,80 L0,80 Z" fill="#050e1a"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-vignette" aria-hidden="true"></div>
+
+  <!-- Contenido -->
+  <div class="hero-content" id="hero-content">
+    <p class="hero-eyebrow">
+      <span class="hero-eyebrow-line" aria-hidden="true"></span>
+      Frente al Mar · Mazatlán, Sinaloa
+      <span class="hero-eyebrow-line" aria-hidden="true"></span>
+    </p>
+    <h1 class="hero-h1">
+      Donde el océano<br/>llega a <em>tu mesa</em>
+    </h1>
+    <p class="hero-sub">
+      No prometemos "el mejor sabor del mundo". Solo garantizamos
+      lo que el Pacífico ya sabe hacer: mariscos frescos, sazón
+      de manos locales y una vista que no necesita filtro.
+    </p>
+    <div class="hero-btns" role="group" aria-label="Acciones principales">
+      <button class="btn btn-red"   onclick="goTo('#reserve')">🦐 Reservar mesa</button>
+      <button class="btn btn-ghost" onclick="goTo('#menu')"   >Ver la carta</button>
+    </div>
+  </div>
+
+  <!-- Badge rotatorio -->
+  <div class="hero-badge" aria-hidden="true">
+    <div class="hero-badge-inner">
+      <span class="badge-txt">MUELLE</span>
+      <span class="badge-icon">⚓</span>
+      <span class="badge-txt">TURÍSTICO</span>
+      <span class="badge-txt" style="color:var(--co)">MAZATLÁN</span>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <button class="hero-scroll" onclick="goTo('#about')" aria-label="Ir a la siguiente sección">
+    <span aria-hidden="true">Descubrir</span>
+    <span class="scroll-arrow" aria-hidden="true"></span>
+  </button>
+</section>
+
+<!-- ════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════ -->
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Texto -->
+      <div>
+        <p class="label about-label reveal">— Nuestra historia</p>
+        <h2 id="about-title" class="about-h2 reveal delay-1">
+          Más de dos décadas<br/><span>mirando al Pacífico</span>
+        </h2>
+        <div class="about-body reveal delay-2">
+          <p>La Puntilla no nació de una franquicia ni de un concepto importado. Nació de la orilla: ahí donde el muelle histórico de Mazatlán se convierte en el primer abrazo que el mar le da a quien llega a esta ciudad.</p>
+          <p>Cada platillo carga el mismo principio que le dio nombre: llegar hasta el punto donde termina la tierra y empieza lo que vale la pena.</p>
+          <p>El producto llega temprano, la tortilla se hace a mano y la brisa del Golfo de California no se cobra en la cuenta.</p>
+        </div>
+        <div class="about-stats reveal delay-3" role="list" aria-label="Datos del restaurante">
+          <div role="listitem">
+            <div class="stat-val" aria-label="Más de 20 años en el muelle">+20</div>
+            <div class="stat-lbl">Años en el muelle</div>
+          </div>
+          <div role="listitem">
+            <div class="stat-val" aria-label="Apertura desde las 8 am">8 am</div>
+            <div class="stat-lbl">Apertura diaria</div>
+          </div>
+          <div role="listitem">
+            <div class="stat-val" aria-label="Más de 60 platillos en carta">60+</div>
+            <div class="stat-lbl">Platillos en carta</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual -->
+      <div class="about-visual reveal-r" aria-hidden="true">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;opacity:.8">
+          <defs>
+            <linearGradient id="gw" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%"   stop-color="#26b5ad" stop-opacity=".8"/>
+              <stop offset="100%" stop-color="#1a7b76" stop-opacity=".2"/>
+            </linearGradient>
+          </defs>
+          <circle cx="150" cy="55" r="28" fill="#c9870d" opacity=".5"/>
+          <circle cx="150" cy="55" r="17" fill="#e8a020" opacity=".7"/>
+          <line x1="150" y1="23" x2="150" y2="10" stroke="#e8a020" stroke-width="1.5" opacity=".5"/>
+          <line x1="150" y1="87" x2="150" y2="100" stroke="#e8a020" stroke-width="1.5" opacity=".5"/>
+          <line x1="118" y1="55" x2="105" y2="55" stroke="#e8a020" stroke-width="1.5" opacity=".5"/>
+          <line x1="182" y1="55" x2="195" y2="55" stroke="#e8a020" stroke-width="1.5" opacity=".5"/>
+          <line x1="128" y1="33" x2="119" y2="24" stroke="#e8a020" stroke-width="1.5" opacity=".4"/>
+          <line x1="172" y1="33" x2="181" y2="24" stroke="#e8a020" stroke-width="1.5" opacity=".4"/>
+          <line x1="128" y1="77" x2="119" y2="86" stroke="#e8a020" stroke-width="1.5" opacity=".4"/>
+          <line x1="172" y1="77" x2="181" y2="86" stroke="#e8a020" stroke-width="1.5" opacity=".4"/>
+          <path d="M0,95 Q75,75 150,95 Q225,115 300,95 L300,145 Q225,125 150,145 Q75,165 0,145 Z" fill="url(#gw)" opacity=".55"/>
+          <path d="M0,120 Q75,108 150,120 Q225,132 300,120 L300,180 L0,180 Z" fill="#0d2c50" opacity=".9"/>
+          <path d="M112,112 L128,100 L185,100 L200,112 Z" fill="#26b5ad" opacity=".4"/>
+          <rect x="147" y="84" width="3" height="16" fill="#26b5ad" opacity=".4"/>
+        </svg>
+        <p class="about-quote">"El mar no pide permiso.<br/>Nosotros tampoco."</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ESPECIALIDADES
+════════════════════════════════════════ -->
+<section id="menu" class="section" aria-labelledby="menu-title">
+  <!-- Glow que sigue al cursor -->
+  <div class="menu-glow" id="menu-glow" aria-hidden="true"></div>
+
+  <div class="container" style="position:relative;z-index:1">
+    <header class="menu-header">
+      <p class="label menu-label reveal">— La carta</p>
+      <h2 id="menu-title" class="menu-h2 reveal delay-1">Especialidades</h2>
+      <p class="menu-sub reveal delay-2">
+        Sin menú de temporada ni platillos de diseño.<br/>
+        Solo lo que el Pacífico da y lo que las manos saben hacer.
+      </p>
+    </header>
+
+    <div class="dish-grid" role="list" aria-label="Especialidades del restaurante">
+
+      <!-- Zarandeado (featured) -->
+      <article class="dish-card featured" role="listitem" aria-label="Platillo destacado: Pescado Zarandeado">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem">
+          <span class="dish-emoji" role="img" aria-label="Pescado">🐟</span>
+          <span class="featured-badge">★ Platillo estrella</span>
+        </div>
+        <div>
+          <span class="tag" style="margin-bottom:.5rem;display:inline-block">Ícono de la casa</span>
+          <h3 class="dish-name">Pescado Zarandeado</h3>
+          <p class="dish-desc">Un ritual más que un platillo. El pargo entero abierto en mariposa, sellado lento sobre carbón y bañado en adobo de chiltepín, limón y hierbas del monte. Requiere tiempo. Lo vale.</p>
+        </div>
+      </article>
+
+      <!-- Aguachile -->
+      <article class="dish-card" role="listitem" aria-label="Platillo: Aguachile Negro">
+        <span class="dish-emoji" role="img" aria-label="Camarón">🦐</span>
+        <span class="tag" style="margin-bottom:.5rem;display:inline-block">Fresco</span>
+        <h3 class="dish-name">Aguachile Negro</h3>
+        <p class="dish-desc">Camarón de Mazatlán curado al instante en jugo de pepino y chile morita tatemado. Picante, ácido, vivo. El tipo de plato que exige una cerveza fría y silencio.</p>
+      </article>
+
+      <!-- Paté -->
+      <article class="dish-card" role="listitem" aria-label="Platillo: Paté de Camarón">
+        <span class="dish-emoji" role="img" aria-label="Pan">🥐</span>
+        <span class="tag" style="margin-bottom:.5rem;display:inline-block">Para comenzar</span>
+        <h3 class="dish-name">Paté de Camarón</h3>
+        <p class="dish-desc">Cremoso, suave, con un ahumado sutil que convierte la botana de espera en la razón por la que regresas.</p>
+      </article>
+
+      <!-- Parrillada -->
+      <article class="dish-card" role="listitem" aria-label="Platillo: Parrillada Mixta">
+        <span class="dish-emoji" role="img" aria-label="Mariscos">🦪</span>
+        <span class="tag" style="margin-bottom:.5rem;display:inline-block">Para compartir</span>
+        <h3 class="dish-name">Parrillada Mixta</h3>
+        <p class="dish-desc">Pulpo, callo de hacha, camarón gigante y filete sobre las brasas. La mesa completa come, y nadie lleva la cuenta de quién comió más.</p>
+      </article>
+
+      <!-- Tostada -->
+      <article class="dish-card" role="listitem" aria-label="Platillo: Tostada Hawaiana">
+        <span class="dish-emoji" role="img" aria-label="Ola">🌊</span>
+        <span class="tag" style="margin-bottom:.5rem;display:inline-block">Mar en bocado</span>
+        <h3 class="dish-name">Tostada Hawaiana</h3>
+        <p class="dish-desc">Atún fresco cortado a cuchillo sobre tostada crujiente, con aguacate, ajonjolí y una vinagreta que no disimula al pescado: lo celebra.</p>
+      </article>
+
+    </div><!-- /dish-grid -->
+
+    <div style="text-align:center;margin-top:4rem" class="reveal">
+      <p style="font-family:var(--fa);font-style:italic;font-size:1.1rem;color:rgba(240,228,200,.6);margin-bottom:1.5rem">
+        La carta completa cambia según lo que el mar decida traer.
+      </p>
+      <button class="btn btn-red" onclick="goTo('#reserve')">🦐 Asegurar mi lugar</button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     BUFFET
+════════════════════════════════════════ -->
+<section id="buffet" class="section" aria-labelledby="buffet-title">
+  <div class="container">
+    <div class="buffet-grid">
+
+      <!-- Visual -->
+      <div class="buffet-visual" aria-hidden="true">
+        <div class="plate plate-main">
+          <span class="plate-emoji">🍳</span>
+          <p style="font-family:var(--fa);font-style:italic;font-size:1.1rem;color:var(--aml);text-align:center;line-height:1.5">
+            "El desayuno que convierte un sábado normal en un recuerdo para toda la semana."
+          </p>
+        </div>
+        <div class="plate plate-b">
+          <span class="plate-emoji" style="font-size:2rem">🦐</span>
+          <p class="plate-title">Buffet</p>
+          <p class="plate-txt">Todo incluido, sin límite de regreso por más</p>
+        </div>
+        <div class="plate plate-sm">
+          <span style="font-size:1.5rem">🌅</span>
+          <p class="plate-txt" style="font-size:.75rem;margin-top:.25rem">Vista al muelle<br/>mientras desayunas</p>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="buffet-content">
+        <p class="label buffet-label reveal">— Mañanas en La Puntilla</p>
+        <h2 id="buffet-title" class="buffet-h2 reveal delay-1">El buffet que no<br/><em>te deja ir</em></h2>
+        <p class="buffet-body reveal delay-2">
+          Hay restaurantes que ofrecen desayuno. Nosotros ofrecemos la excusa perfecta para quedarte una hora más en Mazatlán.
+          El buffet matutino de La Puntilla es amplio, caótico en el buen sentido, y huele a carbón, chile y mar desde que abres la puerta.
+        </p>
+        <ul class="buffet-feats" aria-label="Qué incluye el buffet">
+          <li class="feat reveal delay-1"><span class="feat-icon" aria-hidden="true">🫓</span><span><span class="feat-title">Tortillas de mano</span><span class="feat-sub">Hechas al momento cada mañana</span></span></li>
+          <li class="feat reveal delay-2"><span class="feat-icon" aria-hidden="true">🦐</span><span><span class="feat-title">Mariscos del día</span><span class="feat-sub">Frescos del mercado local</span></span></li>
+          <li class="feat reveal delay-3"><span class="feat-icon" aria-hidden="true">🍲</span><span><span class="feat-title">Guisos regionales</span><span class="feat-sub">Recetas de tradición sinaloense</span></span></li>
+          <li class="feat reveal delay-4"><span class="feat-icon" aria-hidden="true">🌶️</span><span><span class="feat-title">Chiles y salsas</span><span class="feat-sub">De morita, de árbol, tatemados</span></span></li>
+          <li class="feat reveal delay-5"><span class="feat-icon" aria-hidden="true">🥑</span><span><span class="feat-title">Guarniciones frescas</span><span class="feat-sub">Pico de gallo, aguacate, limón</span></span></li>
+          <li class="feat reveal delay-1"><span class="feat-icon" aria-hidden="true">☕</span><span><span class="feat-title">Bebidas calientes</span><span class="feat-sub">Café de olla y atole regional</span></span></li>
+        </ul>
+        <p class="buffet-hours reveal" role="note">
+          <span aria-hidden="true">⏰</span>
+          Buffet de <strong style="color:var(--aml)">8:00 AM a 12:00 PM</strong> · Todos los días
+        </p>
+        <div style="margin-top:2rem" class="reveal">
+          <button class="btn btn-red" onclick="goTo('#reserve')">🍳 Reservar para mañana</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     RESEÑAS (Carousel — 8 reseñas reales)
+════════════════════════════════════════ -->
+<section id="reviews" class="section" aria-labelledby="reviews-title">
+  <div class="reviews-big-q" aria-hidden="true">"</div>
+  <div class="container">
+
+    <header class="reviews-header">
+      <p class="label reviews-label reveal">— Lo que dicen quienes vinieron</p>
+      <h2 id="reviews-title" class="reviews-h2 reveal delay-1">
+        Sin convencer a nadie.<br/><span>Solo escuchar.</span>
+      </h2>
+    </header>
+
+    <!-- Carousel: tarjetas inyectadas por reviews-carousel.js -->
+    <div class="carousel-wrapper reveal delay-2">
+      <div class="carousel-viewport" role="region" aria-label="Reseñas de clientes" tabindex="0">
+        <div class="carousel-track" id="carousel-track"></div>
+      </div>
+
+      <!-- Controles -->
+      <div class="carousel-controls">
+        <button class="carousel-prev" aria-label="Reseñas anteriores">&#8592;</button>
+        <div class="carousel-dots" role="group" aria-label="Páginas del carousel"></div>
+        <button class="carousel-next" aria-label="Siguientes reseñas">&#8594;</button>
+      </div>
+    </div>
+
+    <!-- Rating global -->
+    <p class="reviews-rating reveal">
+      ★★★★★
+      <strong>4.5</strong>
+      <span style="margin-left:.5rem">en Google Maps · +500 reseñas</span>
+      <span style="margin-left:1rem;opacity:.5">·</span>
+      <a href="https://maps.app.goo.gl/LnsMbHG39ZV9LtPq6" target="_blank" rel="noopener noreferrer"
+         style="margin-left:1rem;color:var(--tll);font-style:normal;font-family:var(--fb);font-size:.875rem">
+        Ver todas en Google Maps ↗
+      </a>
+    </p>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     GALERÍA
+════════════════════════════════════════ -->
+<section id="gallery" class="section" aria-labelledby="gallery-title">
+  <div class="container">
+
+    <header class="gallery-header">
+      <p class="label gallery-label reveal">— Instantes del muelle</p>
+      <h2 id="gallery-title" class="gallery-h2 reveal delay-1">
+        Lo que no cabe<br/><span>en palabras</span>
+      </h2>
+      <p class="gallery-sub reveal delay-2">
+        Vista al Pacífico, mariscos sobre la mesa y la brisa de siempre.<br/>
+        Algunas cosas hay que verlas para creerlas.
+      </p>
+    </header>
+
+
+    <div class="gallery-grid reveal delay-2">
+
+      <!-- Slot 1 (wide): Fachada del restaurante al atardecer -->
+      <div class="gallery-slot gallery-slot--wide has-photo">
+        <img src="img/la_puntilla.webp" alt="Fachada de La Puntilla al atardecer en el Muelle Turístico" loading="lazy"/>
+        <div class="gallery-slot__caption">
+          <span class="gallery-slot__caption-text">La Puntilla · Muelle Turístico</span>
+        </div>
+      </div>
+
+      <!-- Slot 2 (tall): Interior con vista al muelle -->
+      <div class="gallery-slot gallery-slot--tall has-photo">
+        <img src="img/local_por_dentro.webp" alt="Interior del restaurante con vista al mar" loading="lazy"/>
+        <div class="gallery-slot__caption">
+          <span class="gallery-slot__caption-text">Vista al Pacífico desde tu mesa</span>
+        </div>
+      </div>
+
+      <!-- Slot 3: Aguachile -->
+      <div class="gallery-slot has-photo">
+        <img src="img/aguachile.webp" alt="Aguachile de camarón y platillos de mariscos" loading="lazy"/>
+        <div class="gallery-slot__caption">
+          <span class="gallery-slot__caption-text">Aguachile de Camarón</span>
+        </div>
+      </div>
+
+      <!-- Slot 4: Pescado zarandeado -->
+      <div class="gallery-slot has-photo">
+        <img src="img/pescado_zarandeado.webp" alt="Pescado zarandeado a la parrilla con guarnición" loading="lazy"/>
+        <div class="gallery-slot__caption">
+          <span class="gallery-slot__caption-text">Pescado Zarandeado</span>
+        </div>
+      </div>
+
+      <!-- Slot 5: Camarones empanizados -->
+      <div class="gallery-slot has-photo">
+        <img src="img/camarones_empanizados.webp" alt="Camarones empanizados con vista al muelle" loading="lazy"/>
+        <div class="gallery-slot__caption">
+          <span class="gallery-slot__caption-text">Camarones Empanizados</span>
+        </div>
+      </div>
+
+      <!-- Slot 6: Tacos gobernador -->
+      <div class="gallery-slot has-photo">
+        <img src="img/tacos_gobernador.webp" alt="Tacos gobernador de camarón con guacamole" loading="lazy"/>
+        <div class="gallery-slot__caption">
+          <span class="gallery-slot__caption-text">Tacos Gobernador</span>
+        </div>
+      </div>
+
+      <!-- Slot 7 (wide): Variedad de platillos -->
+      <div class="gallery-slot gallery-slot--wide has-photo">
+        <img src="img/platillos.webp" alt="Variedad de platillos de mariscos en La Puntilla" loading="lazy"/>
+        <div class="gallery-slot__caption">
+          <span class="gallery-slot__caption-text">Variedad de Mariscos</span>
+        </div>
+      </div>
+
+    </div><!-- /gallery-grid -->
+
+    <!-- Nota de desarrollo (puedes eliminarla antes de entregar) -->
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     RESERVAR
+════════════════════════════════════════ -->
+<section id="reserve" class="section" aria-labelledby="reserve-title">
+  <div class="container">
+    <div class="reserve-inner">
+
+      <p class="label reserve-label reveal">— Asegura tu lugar</p>
+      <h2 id="reserve-title" class="reserve-h2 reveal delay-1">
+        Una mesa frente al<br/><span>Pacífico no espera</span>
+      </h2>
+      <span class="reserve-sub reveal delay-2">
+        No tenemos formularios de 10 pasos ni sistemas de espera automatizados.
+        Una llamada o un mensaje bastan. Así de directo trabaja La Puntilla.
+      </span>
+
+      <!-- Banner de confirmación -->
+      <div id="confirm-banner" class="confirm-banner" role="status" aria-live="polite">
+        ✅ ¡Perfecto! Te llevamos a WhatsApp. Nos vemos en La Puntilla.
+      </div>
+
+      <!-- Opciones de contacto -->
+      <div class="contact-grid reveal delay-3" role="group" aria-label="Opciones para reservar">
+
+        <div class="contact-opt wa">
+          <span class="opt-icon" aria-hidden="true">💬</span>
+          <span class="opt-badge">Más rápido</span>
+          <p class="opt-title">WhatsApp</p>
+          <p class="opt-number">Respuesta en minutos</p>
+          <a href="https://wa.me/526691971124?text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20una%20reservaci%C3%B3n%20en%20La%20Puntilla."
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-green btn-full"
+             onclick="showConfirm()"
+             aria-label="Reservar vía WhatsApp">
+            💬 Abrir WhatsApp
+          </a>
+        </div>
+
+        <div class="contact-opt ph">
+          <span class="opt-icon" aria-hidden="true">📞</span>
+          <span class="opt-badge">Llamada directa</span>
+          <p class="opt-title">Teléfono</p>
+          <p class="opt-number">669 982 8877</p>
+          <a href="tel:6699828877" class="btn btn-teal btn-full" aria-label="Llamar al 669 982 8877">
+            📞 Llamar ahora
+          </a>
+        </div>
+
+      </div>
+
+      <p class="reserve-note reveal" role="note">
+        <span aria-hidden="true">🕗</span>
+        Atendemos de <strong>8:00 AM a 6:00 PM</strong> · Abierto todos los días
+      </p>
+      <a href="https://maps.app.goo.gl/LnsMbHG39ZV9LtPq6"
+         target="_blank" rel="noopener noreferrer"
+         class="reserve-address"
+         aria-label="Ver La Puntilla en Google Maps">
+        <span aria-hidden="true">📍</span>
+        Int. Muelle Turístico S/N, Playas del Sur, Mazatlán, Sinaloa
+      </a>
+
+    </div><!-- /reserve-inner -->
+
+    <!-- Mapa de Google Maps embebido -->
+    <div class="map-wrapper reveal" style="max-width:860px;margin-inline:auto;margin-top:3rem">
+      <span class="map-label">📍 Muelle Turístico · Mazatlán</span>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.123456789!2d-106.4179444!3d23.1877073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869f533b78184ea1%3A0x2cafa080db98670c!2sLa%20Puntilla%20Restaurante%20de%20Mariscos!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx"
+        title="Ubicación de La Puntilla en Google Maps"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        aria-label="Mapa de Google Maps mostrando la ubicación de La Puntilla">
+      </iframe>
+    </div>
+    <div style="text-align:center;margin-top:1rem">
+      <a href="https://maps.app.goo.gl/LnsMbHG39ZV9LtPq6"
+         target="_blank" rel="noopener noreferrer"
+         class="map-open-link">
+        <span>🗺️</span> Abrir en Google Maps ↗
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <p class="footer-brand-name">La Puntilla</p>
+        <span class="footer-brand-sub">Restaurante de Mariscos</span>
+        <p class="footer-tagline">Frente al muelle histórico de Mazatlán, donde el mar no es decoración: es el ingrediente principal.</p>
+        <div class="footer-social" aria-label="Redes sociales">
+          <a href="https://www.facebook.com/profile.php?id=100089306937520"  class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/lapuntilla.mariscos/" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◈</a>
+          <a href="https://maps.app.goo.gl/LnsMbHG39ZV9LtPq6" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">⊕</a>
+        </div>
+      </div>
+
+      <nav aria-label="Navegación del pie de página">
+        <p class="footer-col-title">Navegación</p>
+        <ul class="footer-links">
+          <li><span class="footer-link" onclick="goTo('#hero')"    tabindex="0">Inicio</span></li>
+          <li><span class="footer-link" onclick="goTo('#about')"   tabindex="0">Nosotros</span></li>
+          <li><span class="footer-link" onclick="goTo('#menu')"    tabindex="0">Especialidades</span></li>
+          <li><span class="footer-link" onclick="goTo('#buffet')"  tabindex="0">Buffet</span></li>
+          <li><span class="footer-link" onclick="goTo('#gallery')" tabindex="0">Galería</span></li>
+          <li><span class="footer-link" onclick="goTo('#reviews')" tabindex="0">Reseñas</span></li>
+          <li><span class="footer-link" onclick="goTo('#reserve')" tabindex="0">Reservar</span></li>
+        </ul>
+      </nav>
+
+      <address style="font-style:normal">
+        <p class="footer-col-title">Contacto</p>
+        <div class="footer-contact-row"><span class="footer-contact-icon" aria-hidden="true">📍</span><span>Int. Muelle Turístico S/N,<br/>Mazatlán, Sinaloa 82040</span></div>
+        <div class="footer-contact-row"><span class="footer-contact-icon" aria-hidden="true">📞</span><a href="tel:6699828877" style="color:inherit">669 982 8877</a></div>
+        <div class="footer-contact-row"><span class="footer-contact-icon" aria-hidden="true">💬</span><a href="https://wa.me/526691971124" target="_blank" rel="noopener noreferrer" style="color:var(--tll)">WhatsApp</a></div>
+        <div class="footer-contact-row"><span class="footer-contact-icon" aria-hidden="true">🌐</span><a href="https://maps.app.goo.gl/LnsMbHG39ZV9LtPq6" target="_blank" rel="noopener noreferrer" style="color:inherit">Google Maps</a></div>
+      </address>
+
+      <div>
+        <p class="footer-col-title">Horarios</p>
+        <dl>
+          <div class="hours-row"><dt class="hours-day">Lunes – Viernes</dt><dd class="hours-time">8 am – 7 pm</dd></div>
+          <div class="hours-row"><dt class="hours-day">Sábado</dt>         <dd class="hours-time">8 am – 7 pm</dd></div>
+          <div class="hours-row"><dt class="hours-day">Domingo</dt>        <dd class="hours-time">8 am – 7 pm</dd></div>
+        </dl>
+        <p style="margin-top:1rem;font-size:.75rem;color:rgba(240,228,200,.4);line-height:1.5">
+          * Reservación recomendada para grupos de +6 personas.
+        </p>
+      </div>
+
+    </div><!-- /footer-grid -->
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span id="year"></span> La Puntilla · Todos los derechos reservados</p>
+      <nav class="footer-legal" aria-label="Links legales">
+        <a href="https://maps.app.goo.gl/LnsMbHG39ZV9LtPq6" target="_blank" rel="noopener noreferrer">Google Maps</a>
+        <a href="https://wa.me/526691971124" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JS — Orden crítico ═══
+     1. utils     → funciones puras (sin dependencias)
+     2. navbar    → depende de utils
+     3. hero      → depende de utils
+     4. cursor-glow → depende de utils
+     5. reveal    → depende de utils
+     6. reservation → independiente
+     7. main      → arranca todo
+-->
+<!-- Lightbox para galería -->
+<div id="lightbox" class="lightbox" role="dialog" aria-label="Foto ampliada" aria-modal="true">
+  <button class="lightbox-close" aria-label="Cerrar foto">✕</button>
+  <img class="lightbox-img" src="" alt="" />
+  <p class="lightbox-caption"></p>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/hero.js"></script>
+<script src="js/cursor-glow.js"></script>
+<script src="js/reveal.js"></script>
+<script src="js/reservation.js"></script>
+<script src="js/reviews-carousel.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

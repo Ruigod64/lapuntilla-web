@@ -1,0 +1,39 @@
+/* ═══════════════════════════════════════
+   La Puntilla — Reset & Base
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--fb);
+  background: var(--oc);
+  color: var(--sd);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a    { color: inherit; text-decoration: none; }
+ul   { list-style: none; }
+img  { display: block; max-width: 100%; }
+
+/* Scrollbar */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: var(--ab); }
+::-webkit-scrollbar-thumb { background: var(--tl); border-radius: 99px; }
+
+/* Selección de texto */
+::selection { background: var(--tl); color: var(--pl); }
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--tll);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

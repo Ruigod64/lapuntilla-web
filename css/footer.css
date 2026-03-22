@@ -1,0 +1,147 @@
+/* ═══════════════════════════════════════
+   La Puntilla — Footer
+═══════════════════════════════════════ */
+footer {
+  background: var(--ab);
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid rgba(26,123,118,.15);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* ── Brand ── */
+.footer-brand-name {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--pl);
+  letter-spacing: -.02em;
+}
+
+.footer-brand-sub {
+  display: block;
+  font-family: var(--fa);
+  font-style: italic;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  color: var(--tll);
+  margin-bottom: 1rem;
+}
+
+.footer-tagline {
+  font-size: .875rem;
+  line-height: 1.6;
+  color: rgba(240,228,200,.55);
+  margin-bottom: 1.5rem;
+  max-width: 240px;
+}
+
+.footer-social { display: flex; gap: .75rem; }
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(26,123,118,.12);
+  border: 1px solid rgba(26,123,118,.2);
+  color: var(--tll);
+  font-size: 1rem;
+  transition: background .3s, border-color .3s, transform .3s var(--spring);
+  text-decoration: none;
+}
+
+.social-btn:hover {
+  background: rgba(26,123,118,.25);
+  border-color: rgba(26,181,173,.4);
+  transform: translateY(-3px);
+}
+
+/* ── Columnas ── */
+.footer-col-title {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--pl);
+  margin-bottom: 1rem;
+}
+
+.footer-links { display: flex; flex-direction: column; gap: .75rem; }
+
+.footer-link {
+  font-size: .875rem;
+  color: rgba(240,228,200,.55);
+  transition: color .3s;
+  cursor: pointer;
+}
+
+.footer-link:hover { color: var(--tll); }
+
+/* ── Contacto ── */
+.footer-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  font-size: .875rem;
+  color: rgba(240,228,200,.55);
+  margin-bottom: .75rem;
+  line-height: 1.5;
+}
+
+.footer-contact-icon { color: var(--tll); flex-shrink: 0; margin-top: 1px; }
+
+/* ── Horarios ── */
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: .75rem;
+  color: rgba(240,228,200,.55);
+  margin-bottom: .5rem;
+}
+
+.hours-day  { color: rgba(240,228,200,.75); font-weight: 500; }
+.hours-time { color: var(--tll); }
+
+/* ── Bottom bar ── */
+.footer-bottom {
+  border-top: 1px solid rgba(26,123,118,.1);
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copy { font-size: .75rem; color: rgba(240,228,200,.3); }
+
+.footer-legal { display: flex; gap: 1.5rem; }
+
+.footer-legal a {
+  font-size: .75rem;
+  color: rgba(240,228,200,.3);
+  transition: color .3s;
+}
+
+.footer-legal a:hover { color: rgba(240,228,200,.7); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .footer-grid            { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-brand           { grid-column: span 2; }
+}
+
+@media (max-width: 500px) {
+  .footer-grid            { grid-template-columns: 1fr; }
+  .footer-brand           { grid-column: span 1; }
+  .footer-bottom          { flex-direction: column; align-items: center; text-align: center; }
+}

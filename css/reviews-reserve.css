@@ -1,0 +1,320 @@
+/* ═══════════════════════════════════════
+   La Puntilla — Reviews (Carousel)
+═══════════════════════════════════════ */
+#reviews {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(26,123,118,.06) 0%, transparent 70%),
+    linear-gradient(180deg, var(--oc) 0%, var(--ab) 100%);
+}
+
+.reviews-big-q {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--fd);
+  font-size: 20rem;
+  line-height: 1;
+  color: rgba(26,123,118,.04);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  font-weight: 900;
+}
+
+.reviews-header  { text-align: center; margin-bottom: 4rem; position: relative; z-index: 1; }
+.reviews-label   { color: var(--tll); margin-bottom: 1rem; }
+
+.reviews-h2 {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  color: var(--pl);
+}
+
+.reviews-h2 span { color: var(--tll); font-style: italic; }
+
+/* ── Carousel wrapper ── */
+.carousel-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: grab;
+}
+
+.carousel-viewport:active { cursor: grabbing; }
+
+.carousel-track {
+  display: flex;
+  gap: 24px;                /* GAP fijo — debe coincidir con la const GAP en reviews-carousel.js */
+  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+  will-change: transform;
+  /* El width de cada tarjeta lo asigna JS en píxeles */
+}
+
+/* Cada tarjeta ocupa 1/N del track; JS asigna el width exacto */
+.review-card {
+  background: rgba(9,28,53,.7);
+  border: 1px solid rgba(26,123,118,.12);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color .3s, box-shadow .3s;
+  position: relative;
+  overflow: hidden;
+  /* min-height para uniformidad */
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  /* Impedir selección de texto al arrastrar */
+  user-select: none;
+}
+
+.review-card::before {
+  content: '"';
+  position: absolute;
+  top: .75rem; right: 1.25rem;
+  font-family: var(--fd);
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(26,123,118,.12);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.review-card:hover {
+  border-color: rgba(26,123,118,.3);
+  box-shadow: 0 16px 40px rgba(5,14,26,.5);
+}
+
+.review-card.featured {
+  background: linear-gradient(135deg, rgba(26,123,118,.15), rgba(9,28,53,.9));
+  border-color: rgba(26,181,173,.25);
+}
+
+.stars        { display: flex; gap: 3px; margin-bottom: 1rem; }
+.star         { color: var(--aml); font-size: .9rem; }
+
+.review-text {
+  font-family: var(--fa);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(240,228,200,.8);
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.review-author  { display: flex; align-items: center; gap: .75rem; }
+
+.avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--tl), var(--dp));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.author-name { font-weight: 500; font-size: .875rem; color: var(--sd); display: block; }
+.author-src  { font-size: .75rem; color: rgba(240,228,200,.45); }
+
+/* ── Controles prev / next ── */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.carousel-prev,
+.carousel-next {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(13,44,80,.6);
+  border: 1px solid rgba(26,123,118,.25);
+  color: var(--tll);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .3s, border-color .3s, transform .3s var(--spring), opacity .3s;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: rgba(26,123,118,.2);
+  border-color: rgba(26,181,173,.5);
+  transform: scale(1.08);
+}
+
+.carousel-prev:disabled,
+.carousel-next:disabled {
+  opacity: .3;
+  cursor: default;
+  transform: none;
+}
+
+/* ── Dots ── */
+.carousel-dots {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+}
+
+.carousel-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(240,228,200,.2);
+  border: none;
+  cursor: pointer;
+  transition: background .3s, transform .3s var(--spring), width .3s;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: var(--tll);
+  transform: scale(1.2);
+  width: 22px;
+  border-radius: 4px;
+}
+
+/* ── Rating global ── */
+.reviews-rating {
+  text-align: center;
+  margin-top: 3rem;
+  font-family: var(--fa);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgba(240,228,200,.5);
+}
+
+.reviews-rating strong {
+  margin-left: .75rem;
+  color: var(--aml);
+  font-family: var(--fd);
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/* ═══════════════════════════════════════
+   La Puntilla — Reservation
+═══════════════════════════════════════ */
+#reserve {
+  background:
+    radial-gradient(ellipse 100% 80% at 50% 50%, rgba(26,123,118,.12) 0%, transparent 65%),
+    var(--oc);
+  text-align: center;
+}
+
+.reserve-inner { max-width: 680px; margin-inline: auto; }
+
+.reserve-label { color: var(--co); margin-bottom: 1.5rem; }
+
+.reserve-h2 {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  color: var(--pl);
+  margin-bottom: 1rem;
+}
+
+.reserve-h2 span { color: var(--tll); font-style: italic; }
+
+.reserve-sub {
+  display: block;
+  font-family: var(--fa);
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(240,228,200,.65);
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-opt {
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(5,14,26,.6);
+  transition: transform .3s var(--spring), border-color .3s, background .3s;
+}
+
+.contact-opt.wa { border: 1px solid rgba(37,160,96,.25); }
+.contact-opt.ph { border: 1px solid rgba(26,123,118,.25); }
+
+.contact-opt.wa:hover { background: rgba(26,123,74,.1);   border-color: rgba(37,160,96,.45);  transform: translateY(-4px); }
+.contact-opt.ph:hover { background: rgba(26,123,118,.08); border-color: rgba(26,181,173,.45); transform: translateY(-4px); }
+
+.opt-icon   { font-size: 2.5rem; }
+.opt-badge  { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(240,228,200,.5); }
+.opt-title  { font-family: var(--fd); font-weight: 700; font-size: 1.4rem; color: var(--pl); }
+.opt-number { font-family: var(--fa); font-style: italic; font-size: .9rem; color: rgba(240,228,200,.6); }
+
+.reserve-note {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  background: rgba(201,135,13,.1);
+  border: 1px solid rgba(201,135,13,.2);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-size: .875rem;
+  color: rgba(240,228,200,.7);
+  margin-bottom: 1rem;
+}
+
+.reserve-note strong { color: var(--aml); }
+
+.reserve-address {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .75rem;
+  color: rgba(240,228,200,.4);
+  letter-spacing: .05em;
+}
+
+.confirm-banner {
+  background: rgba(26,123,74,.15);
+  border: 1px solid rgba(37,160,96,.3);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-size: .875rem;
+  color: #25a060;
+  margin-bottom: 1.5rem;
+  display: none;
+}
+
+.confirm-banner.show { display: block; }
+
+@media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }

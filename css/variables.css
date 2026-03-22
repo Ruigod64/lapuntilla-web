@@ -1,0 +1,31 @@
+/* ═══════════════════════════════════════
+   La Puntilla — Design Tokens
+═══════════════════════════════════════ */
+:root {
+  /* Paleta oceánica */
+  --ab:  #050e1a;   /* abyss */
+  --oc:  #091c35;   /* ocean */
+  --dp:  #0d2c50;   /* deep */
+  --tl:  #1a7b76;   /* teal */
+  --tll: #26b5ad;   /* teal light */
+  --co:  #d95f3b;   /* coral */
+  --col: #f07a5a;   /* coral light */
+  --am:  #c9870d;   /* amber */
+  --aml: #e8a020;   /* amber light */
+  --sd:  #f0e4c8;   /* sand */
+  --pl:  #faf6ee;   /* pearl */
+  --rs:  #b84020;   /* rust */
+
+  /* Tipografía */
+  --fd: 'Playfair Display', Georgia, serif;
+  --fb: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --fa: 'Cormorant Garamond', Georgia, serif;
+
+  /* Layout */
+  --nav: 72px;
+  --max-w: 1280px;
+
+  /* Easings */
+  --ease:   cubic-bezier(.22, .61, .36, 1);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+}

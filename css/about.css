@@ -1,0 +1,97 @@
+/* ═══════════════════════════════════════
+   La Puntilla — About
+═══════════════════════════════════════ */
+#about {
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 50%, rgba(26,123,118,.08) 0%, transparent 60%),
+    var(--ab);
+}
+
+#about::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--tl), transparent);
+  opacity: .3;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* ── Columna texto ── */
+.about-label  { color: var(--co); margin-bottom: 1rem; }
+
+.about-h2 {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  color: var(--pl);
+  margin-bottom: 1.5rem;
+}
+
+.about-h2 span { color: var(--tll); font-style: italic; }
+
+.about-body {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(240,228,200,.75);
+  margin-bottom: 2rem;
+}
+
+.about-body p + p { margin-top: 1rem; }
+
+.about-stats  { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+
+.stat-val {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--aml);
+  line-height: 1;
+}
+
+.stat-lbl {
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(240,228,200,.5);
+  margin-top: .25rem;
+}
+
+/* ── Columna visual ── */
+.about-visual {
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(26,123,118,.12), rgba(5,14,26,.85));
+  border: 1px solid rgba(26,123,118,.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
+  height: 440px;
+  overflow: hidden;
+}
+
+.about-quote {
+  font-family: var(--fa);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.55;
+  color: var(--tll);
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .about-grid   { grid-template-columns: 1fr; gap: 3rem; }
+  .about-visual { height: 260px; }
+}

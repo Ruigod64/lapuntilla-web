@@ -1,0 +1,145 @@
+/* ═══════════════════════════════════════════════════════
+   La Puntilla — Legacy Browser Support (@supports)
+   Fallbacks para IE11 / Edge Legacy / Chrome < 70
+═══════════════════════════════════════════════════════ */
+
+/* ── 1. CSS Custom Properties: fallbacks hardcodeados ── */
+#navbar        { background: #050e1a; }
+#hero          { background: #091c35; }
+#about         { background: #050e1a; }
+#menu          { background: #091c35; }
+#buffet        { background: #050e1a; }
+#reviews       { background: #091c35; }
+#reserve       { background: #091c35; }
+footer         { background: #050e1a; }
+
+/* Si soporta variables, anulamos los fallbacks anteriores */
+@supports (color: var(--ab)) {
+  #navbar, #hero, #about, #menu,
+  #buffet, #reviews, #reserve, footer {
+    background: unset;
+  }
+}
+
+/* ── 2. Grid → Flexbox fallback ── */
+.about-grid,
+.buffet-grid,
+.dish-grid,
+.reviews-grid,
+.contact-grid,
+.footer-grid,
+.buffet-feats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.about-grid > *,
+.buffet-grid > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 280px;
+          flex: 1 1 280px;
+}
+
+.dish-grid > * {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(33.33% - 1rem);
+          flex: 0 0 calc(33.33% - 1rem);
+  min-width: 260px;
+}
+
+.reviews-grid > * {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(33.33% - 1rem);
+          flex: 0 0 calc(33.33% - 1rem);
+  min-width: 260px;
+}
+
+.contact-grid > *,
+.footer-grid > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 200px;
+          flex: 1 1 200px;
+}
+
+.buffet-feats > * {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - .75rem);
+          flex: 0 0 calc(50% - .75rem);
+}
+
+/* Si soporta Grid nativo, lo reemplazamos */
+@supports (display: grid) {
+  .about-grid    { display: grid; grid-template-columns: 1fr 1fr;           gap: 4rem; }
+  .buffet-grid   { display: grid; grid-template-columns: 1.1fr 1fr;         gap: 4rem; }
+  .dish-grid     { display: grid; grid-template-columns: repeat(3, 1fr);    gap: 1.5rem; }
+  .reviews-grid  { display: grid; grid-template-columns: repeat(3, 1fr);    gap: 1.5rem; }
+  .contact-grid  { display: grid; grid-template-columns: 1fr 1fr;           gap: 1.5rem; }
+  .footer-grid   { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; }
+  .buffet-feats  { display: grid; grid-template-columns: 1fr 1fr;           gap: 1rem; }
+
+  /* Limpiar flex props heredados */
+  .about-grid > *, .buffet-grid > *,
+  .dish-grid > *, .reviews-grid > *,
+  .contact-grid > *, .footer-grid > *,
+  .buffet-feats > * {
+    flex: unset;
+    min-width: unset;
+  }
+}
+
+/* ── 3. Backdrop-filter: fondo sólido si no está disponible ── */
+#navbar.scrolled  { background: rgba(5,14,26,.97); }
+.dish-card,
+.plate,
+.contact-opt,
+.review-card,
+.about-visual     { background: rgba(13,44,80,.85); }
+#mobile-menu      { background: rgba(5,14,26,.99); }
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  #navbar.scrolled  { background: rgba(5,14,26,.88); }
+  .dish-card        { background: rgba(13,44,80,.5);  }
+  .plate            { background: linear-gradient(135deg, rgba(13,44,80,.85), rgba(5,14,26,.9)); }
+  .contact-opt      { background: rgba(5,14,26,.6);   }
+  .review-card      { background: rgba(9,28,53,.7);   }
+  .about-visual     { background: linear-gradient(135deg, rgba(26,123,118,.12), rgba(5,14,26,.85)); }
+  #mobile-menu      { background: rgba(5,14,26,.97);  }
+}
+
+/* ── 4. svh (viewport height moderna) → vh fallback ── */
+#hero { height: 100vh; }
+
+@supports (height: 100svh) {
+  #hero { height: 100svh; }
+}
+
+/* ── 5. Scroll behavior ── */
+@supports (scroll-behavior: smooth) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ── 6. :focus-visible → :focus genérico en browsers viejos ── */
+a:focus, button:focus { outline: 2px solid #26b5ad; outline-offset: 3px; }
+
+@supports selector(:focus-visible) {
+  a:focus:not(:focus-visible),
+  button:focus:not(:focus-visible) { outline: none; }
+}
+
+/* ── 7. prefers-reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:       .01ms !important;
+    animation-iteration-count: 1    !important;
+    transition-duration:      .01ms !important;
+    scroll-behavior:           auto  !important;
+  }
+  .particle        { display: none; }
+  .hero-badge      { animation: none; }
+  .hero-badge-inner{ animation: none; }
+  .hero-scroll     { animation: none; }
+}
